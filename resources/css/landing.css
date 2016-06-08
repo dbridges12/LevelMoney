@@ -1,0 +1,176 @@
+body {
+    background-color: #b6ceca;
+}
+
+
+
+.headerbar {
+    position: relative;
+    padding: 4px;
+    height: 64px;
+    background-color: #393939;
+    z-index: 1;
+}
+
+.headerbar .lmlogo {
+    position: relative;
+    top: 2px;
+    left: 25px;
+}
+
+.headerbar .helpicon {
+    position: absolute;
+    right: 20px;
+    top: 9px;
+    cursor: pointer;
+    color: green;
+    border-width: 0px;
+    background-color: transparent;
+}
+
+.hero-content {
+    position: relative;
+    min-height: 500px;
+    margin-top: -75px;
+}
+
+/* need this to handle background image opacity without affecting other elements */
+.hero-content:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../../resources/images/landing.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.hero-content .hero-title {
+    position: absolute;
+    top: 40%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 100%;                    /* makes sure the title inhabits the full width of its container */
+    text-align: center;             /* aligns text in the horizontal center of the element */
+    font-size: 3rem;                /* specifies the size of the font in root em units */
+    font-weight: 400;               /* makes the font thicker */
+    color: #444444
+}
+
+.hero-content .hero-connect {
+    position: absolute;
+    top: 50%;
+    width: 100%;                    /* makes sure the title inhabits the full width of its container */
+    text-align: center;             /* aligns text in the horizontal center of the element */
+    font-size: 1.2rem;                /* specifies the size of the font in root em units */
+    font-weight: 400;               /* makes the font thicker */
+    color: #528779;
+}
+
+.hero-connect .connect-button {
+    background-color: #393939;
+    border: 1px solid #393939;
+    border-radius: 25px;
+    padding: 8px 20px 8px 20px;
+}
+
+.hero-connect .connect-button:hover {
+    color: #d8d8d8;
+}
+
+.hero-content .hero-lang {
+    position: absolute;
+    top: 53%;
+    width: 100%;                    /* makes sure the title inhabits the full width of its container */
+    text-align: center;             /* aligns text in the horizontal center of the element */
+    font-size: .8rem;                /* specifies the size of the font in root em units */
+    font-weight: 600;               /* makes the font thicker */
+    color: #cc6600;
+}
+
+.hero-lang .lang-btn {
+    background-color: #ecf99e;
+    border: 1px solid #cc6600;
+    padding: 4px 5px 4px 5px;
+    vertical-align: middle;
+}
+.hero-lang .lang-img {
+    padding: 5px 10px 7px 4px;
+    vertical-align: middle;
+}
+
+.selling-points {
+    position: relative;
+}
+
+.point {
+    position: relative;
+    padding: 2rem;
+    text-align: center;
+    opacity: 1;
+}
+
+.point .point-title {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.point .point-description {
+    font-size: 0.75rem;
+}
+
+.fa-eye,
+.fa-edit,
+.fa-thumbs-o-up {
+    color: #528779;
+    font-size: 2.5rem;
+}
+
+/* Medium screens (640px) */
+@media (min-width: 40rem) {
+    html { font-size: 112%; }
+
+    .column {
+        float: left;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .column.full { width: 100%; }
+    .column.two-thirds { width: 66.7%; }
+    .column.half { width: 50%; }
+    .column.third { width: 33.3%; }
+    .column.fourth { width: 25%; }
+    .column.flow-opposite { float: right; }
+}
+
+/* Large screens (1024px) */
+@media (min-width: 64rem) {
+    html { font-size: 120%; }
+}
+
+.container {
+    margin: 0 auto; /* auto for l,r margin centers it, t,b here are 0 */
+    max-width: 65rem; /* this is for the selling points blocks */
+}
+
+.container.narrow {
+    max-width: 56rem;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;

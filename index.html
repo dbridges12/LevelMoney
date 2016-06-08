@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Levelmoney</title>
+
+    <link rel="shortcut icon" href="resources/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800">
+    <link rel="stylesheet" type="text/css" href="resources/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-additions.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/ui-grid.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/landing.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/transactions.css">
+
+</head>
+<body ng-app="lm">
+
+    <header-bar></header-bar>
+
+    <ui-view></ui-view>
+
+    <!-- Javascript Files -->
+    <script src="resources/libs/angular.min.js"></script>
+    <script src="resources/libs/angular-resource.min.js"></script>
+    <script src="resources/libs/angular-ui-router.min.js"></script>
+    <script src="resources/libs/ui-grid.min.js"></script>
+    <script src="resources/libs/ngStorage.min.js"></script>
+    <script src="resources/libs/sweetalert2.min.js"></script>
+
+    <script src="app/app.js"></script>
+    <script src="app/landing/landing.controller.js"></script>
+    <script src="app/transactions/transactions.controller.js"></script>
+    <script src="app/directives/headerBar.js"></script>
+    <script src="app/services/getalltrans.service.js"></script>
+
+</body>
+</html>

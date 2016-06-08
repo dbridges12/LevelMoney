@@ -1,0 +1,33 @@
+{
+  "name": "levelmoney",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dbridges12/LevelMoney.git"
+  },
+  "author": "David Bridges",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dbridges12/LevelMoney/issues"
+  },
+  "homepage": "https://github.com/dbridges12/LevelMoney#readme",
+  "devDependencies": {
+    "angular": "^1.5.6",
+    "angular-resource": "^1.5.6",
+    "angular-ui-grid": "^3.1.1",
+    "angular-ui-router": "^0.3.1",
+    "bootstrap": "^3.3.6",
+    "bootstrap-additions": "^0.3.1",
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "ngstorage": "^0.3.10",
+    "normalize.css": "^4.1.1"
+  }
+}

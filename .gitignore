@@ -1,0 +1,7 @@
+
+.gitignore
+.idea/
+build/
+coverage/
+doc/
+node_modules/

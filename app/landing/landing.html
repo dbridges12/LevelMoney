@@ -1,0 +1,36 @@
+<section class="hero-content">
+    <!-- Welcome Text -->
+    <p class="hero-title">Let's get started!</p>
+
+    <!-- Connect to lm Button -->
+    <div class="hero-connect">
+        <button
+                class="connect-button"
+                onfocus="this.blur();"
+                ng-click="landing.login()">
+            <span data-ng-hide="landing.loading">Connect</span>
+            <span data-ng-show="landing.loading">Connecting ...<i class="fa fa-spinner fa-spin"></i></span>
+
+        </button>
+    </div>
+
+
+</section>
+
+<section class="selling-points container clearfix">
+    <div class="point column third">
+        <span class="fa fa-eye"></span>
+        <p class="point-title">Tracking</p>
+        <p class="point-description">Track all your money in one place!</p>
+    </div>
+    <div class="point column third">
+        <span class="fa fa-edit"></span>
+        <p class="point-title">Budgeting</p>
+        <p class="point-description">Manage your budget.</p>
+    </div>
+    <div class="point column third">
+        <span class="fa fa-thumbs-o-up"></span>
+        <p class="point-title">Analysis</p>
+        <p class="point-description">See where your money is going.</p>
+    </div>
+</section>
