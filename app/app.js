@@ -42,7 +42,9 @@
             'ui.grid.resizeColumns',
             'ui.grid.moveColumns',
             'ngStorage',
-            'ngResource'
+            'ngResource',
+            'mgcrea.ngStrap',
+            'ngSanitize'
         ])
         .config(config);
 }());

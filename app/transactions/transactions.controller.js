@@ -10,7 +10,29 @@
 
         vm.aggrTrans = {};
 
+        vm.avgSpend = 0;
+
+        vm.avgIncome = 0;
+
         vm.month = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+        vm.selectedOption = 'options';
+
+        vm.options = [
+            {value: 'options', label: 'Options'},
+            {value: 'donut', label: 'Ignore Donuts'},
+            {value: 'cc', label: 'Remove C.C. Payments'}
+        ];
+
+        vm.setOption = function() {
+            if(vm.selectedOption === 'donut') {
+                vm.init('donut');
+            } else if (vm.selectedOption === 'cc') {
+
+            } else {
+                vm.init('none');
+            }
+        };
 
         console.log ('transcontroller', vm.transList);
 
@@ -40,6 +62,8 @@
         // Dynamically update the grid data based on tab selection
         vm.setGridData = function () {
             var gridData = [],
+                avgSpendArr = [],
+                avgIncomeArr = [],
                 gridObj, key, key2;
 
             // need to create a flat object to push into the array for the grid //
@@ -53,13 +77,26 @@
                     gridObj.year = key;
                     gridObj.month = vm.month[key2];
 
+                    // amount data is stored in Centocents - convert to cents //
                     for (key3 in vm.aggrTrans[key][key2]) {
                         if (key3 === 'spent') {
-                            gridObj.spent = vm.aggrTrans[key][key2][key3]
+                            gridObj.spent = parseInt(vm.aggrTrans[key][key2][key3]) / -10000;  // convert the negative value to positive
+                            avgSpendArr.push(parseInt(vm.aggrTrans[key][key2][key3]) / -10000); // convert the negative value to positive
                         } else {
-                            gridObj.income = vm.aggrTrans[key][key2][key3]
+                            gridObj.income = parseInt(vm.aggrTrans[key][key2][key3]) / 10000;
+                            avgIncomeArr.push(parseInt(vm.aggrTrans[key][key2][key3]) / 10000);
                         }
                     }
+
+                    vm.avgSpend = '$' + parseFloat(avgSpendArr.reduce(function (p, c) {
+                            return p + c;
+                        }) / gridData.length).toFixed(2);
+
+
+                    vm.avgIncome = '$' + parseFloat(avgIncomeArr.reduce(function (p, c) {
+                            return p + c;
+                        }) / gridData.length ).toFixed(2);
+
 
                     gridData.push(gridObj);
                 }
@@ -70,12 +107,16 @@
             vm.gridOpts.data = gridData;
         };
 
-        vm.init = function() {
+        vm.init = function(filter) {
             var month = '',
                 year = '',
                 amount = 0,
+                merchant = '',
                 transArr = vm.transList.data.transactions;
 
+            vm.aggrTrans = {};  // clear when you enter this function every time
+
+            // add and aggregate each transaction to the hash table //
             function updateTrans(year, month, amount) {
                 // create the year object if it doesn't exist //
                 if (!vm.aggrTrans[year]) {
@@ -104,10 +145,19 @@
                 month = transDate.getMonth();
                 year = transDate.getFullYear();
                 amount = transArr[i].amount;
+                merchant = transArr[i].merchant;
 
                 // add the transaction object to the aggregated table //
-                updateTrans(year, month, amount);
+                if (filter === 'donut') {
+                    if (merchant === 'Krispy Kreme Donuts' || merchant === 'Dunkin #336784') {
+                        continue; // skip these merchant transactions //
+                    }
+                }
 
+                if (filter === 'cc') {
+
+                }
+                updateTrans(year, month, amount);
             }
 
             console.log(vm.aggrTrans);
@@ -116,7 +166,7 @@
             vm.setGridData();
         };
 
-        vm.init();
+        vm.init('none');
 
     }
 

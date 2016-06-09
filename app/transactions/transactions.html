@@ -3,6 +3,22 @@
 <div class="gridDiv">
     <div class="grid-title-bar">
         <span class="grid-title">Monthly Transaction Summaries</span>
+        <!-- Options Selector dropdown -->
+        <div class="options-dd">
+            <button
+                    type="button"
+                    class="options-btn"
+                    ng-change="trans.setOption()"
+                    ng-model="trans.selectedOption"
+                    data-html="1"
+                    bs-options="options.value as options.label for options in trans.options"
+                    bs-select>
+                Options <span class="caret"></span>
+            </button>
+        </div>
+        <span class="avg-spend">Avg. Spend: {{trans.avgSpend}}</span>
+        <span class="avg-income">Avg. Income: {{trans.avgIncome}}</span>
+
     </div>
     <div ui-grid="trans.gridOpts" class="db-grid" ui-grid-resize-columns ui-grid-move-columns>
 
