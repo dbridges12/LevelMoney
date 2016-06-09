@@ -5,3 +5,4 @@ build/
 coverage/
 doc/
 node_modules/
+gh-pages/

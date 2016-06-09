@@ -14,6 +14,7 @@
 * Additional Features from above are implemented in a drop down list
 
 # Getting Started
+* Here's the online demo: http://dbridges12.github.io/LevelMoney/index.html
 * Click on Connect button on landing page
   * This will read data from GetAllTransactions API
   * Then will display Grid with all transactions aggregated by year and month and credit/debit
