@@ -21,40 +21,18 @@
                 controllerAs: 'landing',
                 templateUrl: 'app/landing/landing.html'
             })
-            .state('actions', {
+            .state('trans', {
                 views: {
                     '': {
-                        controller: 'ActionsController',
-                        controllerAs: 'actions',
-                        templateUrl: 'app/actions/actions.html',
+                        controller: 'TransactionsController',
+                        controllerAs: 'trans',
+                        templateUrl: 'app/transactions/transactions.html',
                         resolve: {
-                            infoPageUrl : function(GetUrlService) {return GetUrlService.getAd();}
+                            transList : function(GetAllTransService) {return GetAllTransService.getAllTrans();}
                         }
-
-                    },
-                    'nav@actions': {templateUrl: 'app/actions/templates/navbar.html'},
-                    'custinfo@actions': {templateUrl: 'app/actions/templates/custinfo.html'}
+                    }
                 }
             })
-
-            .state('actions.ad', {
-                templateUrl: 'app/actions/templates/infopage.html'
-            })
-
-            .state('actions.editsite', {
-                templateUrl: 'app/actions/templates/editsite.html'
-            })
-
-            .state('actions.detail', {
-                views: {
-                    '': {
-                        templateUrl: 'app/actions/templates/detail.html'
-                    },
-                    'custinfo@actions.detail': {templateUrl: 'app/actions/templates/custinfo.html'}
-                }
-            })
-
-
     }
 
     angular

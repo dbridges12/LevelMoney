@@ -1,0 +1,33 @@
+.gridDiv {
+    height: 100%;
+    width: auto;
+    margin: 40px;
+}
+
+.grid-title-bar {
+    height: 40px;
+    width: 100%;
+    background-color: #2e6da4;
+}
+
+.grid-title {
+    font-size: 1.8em;
+    color: #d8d8d8;
+    padding: 5px;
+    left: 20px;
+}
+
+
+.db-grid {
+    width: auto;
+    height: auto;
+    border-top: 2px solid #aaaaaa;
+    border-left: 0px solid #000000;
+    border-right: 0px solid #000000;
+    border-bottom: 0px solid #000000;
+    color: #666666;
+}
+
+.ui-grid-cell-contents {
+    padding: 10px !important;
+}

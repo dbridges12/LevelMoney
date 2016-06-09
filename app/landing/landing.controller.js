@@ -4,7 +4,7 @@
 
 (function() {
 
-    function LandingController($state, TranslationService, LoginService) {
+    function LandingController($state, GetAllTransService) {
         var vm = this;
 
         // init the connect button so the spinner is hidden //
@@ -12,8 +12,25 @@
 
 
         /**
+         * @function connect
+         * @desc Calls getalltrans service and routes to transaction page on success
+         */
+        vm.connect = function () {
+            vm.loading = true;  // start the loading spinner //
+            $state.go('trans').then(
+                function successCallback() {
+                    vm.loading = false;
+                },
+                function errorCallback() {
+                    vm.loading = false;
+                }
+            );
+
+        };
+
+        /**
          * @function OpenHelp
-         * @desc Opens a Sweet Alert window with the help gif displayed
+         * @desc Opens a Sweet Alert window with the help text displayed
          */
         vm.openHelp = function () {
             swal({
@@ -30,5 +47,5 @@
 
     angular
         .module('lm')
-        .controller('LandingController',['$state', LandingController]);
+        .controller('LandingController',['$state', 'GetAllTransService', LandingController]);
 }());

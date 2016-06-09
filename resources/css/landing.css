@@ -1,8 +1,8 @@
 body {
     background-color: #b6ceca;
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
 }
-
-
 
 .headerbar {
     position: relative;
@@ -86,27 +86,6 @@ body {
     color: #d8d8d8;
 }
 
-.hero-content .hero-lang {
-    position: absolute;
-    top: 53%;
-    width: 100%;                    /* makes sure the title inhabits the full width of its container */
-    text-align: center;             /* aligns text in the horizontal center of the element */
-    font-size: .8rem;                /* specifies the size of the font in root em units */
-    font-weight: 600;               /* makes the font thicker */
-    color: #cc6600;
-}
-
-.hero-lang .lang-btn {
-    background-color: #ecf99e;
-    border: 1px solid #cc6600;
-    padding: 4px 5px 4px 5px;
-    vertical-align: middle;
-}
-.hero-lang .lang-img {
-    padding: 5px 10px 7px 4px;
-    vertical-align: middle;
-}
-
 .selling-points {
     position: relative;
 }
@@ -174,3 +153,4 @@ body {
 
 .clearfix:after {
     clear: both;
+}
