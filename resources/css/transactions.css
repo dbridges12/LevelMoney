@@ -1,6 +1,7 @@
 .gridDiv {
     height: 100%;
     width: auto;
+    min-width: 1100px;
     margin: 40px;
 }
 
