@@ -59,15 +59,15 @@
                     field: 'amount',
                     enableColumnMenu: false,
                     cellTemplate:   '<div class="ui-grid-cell-contents" ng-if="row.entity.income > row.entity.spent">' +
-                    '<span class="green-cell">${{(row.entity.income - row.entity.spent).toFixed(2)}}</span>' +
-                    '</div>' +
-                    '<div class="ui-grid-cell-contents" ng-if="row.entity.income < row.entity.spent">' +
-                    '<span class="red-cell">-${{(row.entity.income - row.entity.spent).toFixed(2) * -1}}</span>' +
-                    '</div>'
+                                        '<span class="green-cell">${{(row.entity.income - row.entity.spent).toFixed(2)}}</span>' +
+                                    '</div>' +
+                                    '<div class="ui-grid-cell-contents" ng-if="row.entity.income < row.entity.spent">' +
+                                        '<span class="red-cell">-${{(row.entity.income - row.entity.spent).toFixed(2) * -1}}</span>' +
+                                    '</div>'
                 }
             ],
 
-            rowHeight: 50
+            rowHeight: 45
         };
 
         // Credit Card Transaction Grid definition and customization //
@@ -87,7 +87,7 @@
                 }
             ],
 
-            rowHeight: 50
+            rowHeight: 45
         };
 
         // Dynamically update the Transaction Summary Grid data.
@@ -135,6 +135,7 @@
             }
             //console.log(gridData);
             vm.gridOpts.data = gridData;
+
         };
 
         // Update the Credit Card Trans Grid data //

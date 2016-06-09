@@ -23,9 +23,9 @@
     <div ui-grid="trans.gridOpts" class="db-grid" ui-grid-resize-columns ui-grid-move-columns></div>
 </div>
 
-<div class="gridDiv">
+<div class="gridDiv" ng-if="trans.selectedOption === 'cc'">
     <div class="grid-title-bar">
         <span class="grid-title">Credit Card Payments</span>
     </div>
-    <div ui-grid="trans.gridOptsCC" class="db-grid" ui-grid-resize-columns ui-grid-move-columns></div>
+    <div ui-grid="trans.gridOptsCC" class="db-grid" ui-grid-resize-columns ui-grid-move-columns ></div>
 </div>
