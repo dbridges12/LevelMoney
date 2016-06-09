@@ -24,7 +24,7 @@
     font-size: .8rem;
     font-weight: 600;
     color: #444444;
-    padding: 8px 20px 0px 0px;
+    padding: 8px 30px 0px 0px;
 }
 
 .options-dd .options-btn {
@@ -61,4 +61,14 @@
 
 .ui-grid-cell-contents {
     padding: 10px !important;
+}
+
+.green-cell {
+    color: #3e8f3e;
+    font-weight: 400;
+}
+
+.red-cell {
+    color: #880000;
+    font-weight: 600;
 }

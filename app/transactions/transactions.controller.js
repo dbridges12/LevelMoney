@@ -19,7 +19,7 @@
         vm.selectedOption = 'options';
 
         vm.options = [
-            {value: 'options', label: 'Options'},
+            {value: 'options', label: 'All Transactions'},
             {value: 'donut', label: 'Ignore Donuts'},
             {value: 'cc', label: 'Remove C.C. Payments'}
         ];
@@ -28,7 +28,7 @@
             if(vm.selectedOption === 'donut') {
                 vm.init('donut');
             } else if (vm.selectedOption === 'cc') {
-
+                vm.init('cc');
             } else {
                 vm.init('none');
             }
@@ -54,6 +54,22 @@
                 { displayName: 'Month', field: 'month', enableColumnMenu: false },
                 { displayName: 'Income', field: 'income', enableColumnMenu: false, cellFilter: 'currency', cellClass: 'totalcost-cell'},
                 { displayName: 'Spent', field: 'spent', enableColumnMenu: false, cellFilter: 'currency', cellClass: 'totalcost-cell'}
+            ],
+
+            rowHeight: 50
+        };
+
+        // Array Column definition and customization //
+        vm.gridOptsCC = {
+            columnDefs: [
+                { displayName: 'Date', field: 'transaction-time', cellFilter: 'date', enableColumnMenu: false},
+                { displayName: 'Description', field: 'merchant', enableColumnMenu: false},
+                { displayName: 'Amount ',
+                    field: 'amount',
+                    enableColumnMenu: false,
+                    cellFilter: 'currency',
+                    cellTemplate: '<div class="ui-grid-cell-contents" ng-if="row.entity.amount > 0"><span class="green-cell">{{row.entity.amount}}</span></div><div class="ui-grid-cell-contents" ng-if="row.entity.amount < 0"><span class="red-cell">{{row.entity.amount}}</span></div>'
+                }
             ],
 
             rowHeight: 50
@@ -107,6 +123,7 @@
             vm.gridOpts.data = gridData;
         };
 
+        // filter can be donut, cc or none //
         vm.init = function(filter) {
             var month = '',
                 year = '',
@@ -139,6 +156,54 @@
 
             }
 
+            if (filter === 'cc') {
+                var tempTransArr = vm.transList.data.transactions,
+                    creditCardArr = [],
+                    newtransArr = [],
+                    nextIndexFound = null;
+
+                for (var k = 0; k < tempTransArr.length; k++) {
+                    // don't process second part of transaction //
+                    if (k === nextIndexFound) {
+                        continue;
+                    }
+
+                    var cc_amount = tempTransArr[k].amount;
+                    var oppositeAmount = (parseInt(cc_amount) * -1);
+                    var cc_transDate = new Date(tempTransArr[k]['transaction-time']);
+                    var nextAmountIndex = tempTransArr.map(function(x) {return x.amount; }).indexOf(oppositeAmount, k + 1);
+                    var objectFound = tempTransArr[nextAmountIndex];
+
+                    if (nextAmountIndex !== -1) {
+                        nextIndexFound = nextAmountIndex;  // track the index of the second half of the transaction so we can skip it later //
+                        var transDateOpp = new Date(tempTransArr[nextAmountIndex]['transaction-time']);
+                        var daysDiff = transDateOpp.getDate() - cc_transDate.getDate();
+                        if (daysDiff === 0 || daysDiff ===1 ) {
+                            if (transDateOpp.getMonth() === cc_transDate.getMonth()) {
+                                tempTransArr[k].amount /= 10000;
+                                objectFound.amount /= 10000;
+                                creditCardArr.push(tempTransArr[k]);
+                                creditCardArr.push(objectFound);
+                            } else {
+                                tempTransArr[k].amount /= 10000;
+                                creditCardArr.push(tempTransArr[k]);
+                                nextIndexFound = null; // need to clear it because this is an unbalanced transaction
+                            }
+                        }
+                    } else {
+                        newtransArr.push(transArr[k]);  // this transaction is included in the aggregate list
+                    }
+                }
+
+                transArr = newtransArr;
+
+                vm.gridOptsCC.data = creditCardArr;
+
+                console.log('cc array', creditCardArr);
+                console.log('newtrans array', newtransArr);
+            }
+
+
             // parse the data into a hash map based on year and month and spend type //
             for (var i =0; i < transArr.length ; i++) {
                 var transDate = new Date(transArr[i]['transaction-time']);
@@ -154,16 +219,15 @@
                     }
                 }
 
-                if (filter === 'cc') {
-
-                }
                 updateTrans(year, month, amount);
             }
 
             console.log(vm.aggrTrans);
 
-            // set the first tabs data
+            // set the top grid data
             vm.setGridData();
+
+
         };
 
         vm.init('none');
