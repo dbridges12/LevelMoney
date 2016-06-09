@@ -1,12 +1,12 @@
 # LevelMoney
 ## Requirements
 * Load transactions from the GetAllTransactions endpoint
-* Display Income and Spend(Expenses) aggragated by month for entire data set
+* Display Income and Spend(Expenses) aggregated by month for entire data set
 * Display Monthly Average Income and Expenses
 
 ## Additional Features
 * Filter to ignore spending on Donuts
-* Filter to remove Credit card credit/debit transactions from aggragates
+* Filter to remove Credit card credit/debit transactions from aggregates
 
 ## Special Features
 * Display Monthly Remaining Balance (income - expense)
@@ -24,7 +24,7 @@
   * All transactions uses all transactions to display data
   * Ignore donuts removes all donut expenses form the spend column for each month
   * Remove C.C. Payments 
-    * Removes credit card credits and debits from the aggragate amount
+    * Removes credit card credits and debits from the aggregate amount
     * Shows a list beneath the main list with each transaction removed
     * Hightlights in the description when a mathcing credit/debit was not found based on 24 hour criteria
 ## Final notes
