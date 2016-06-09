@@ -27,6 +27,7 @@
     * Removes credit card credits and debits from the aggregate amount
     * Shows a list beneath the main list with each transaction removed
     * Hightlights in the description when a mathcing credit/debit was not found based on 24 hour criteria
+    
 ## Final notes
 * App uses Angular framework
 * Source is commented
